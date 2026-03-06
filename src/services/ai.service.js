@@ -1,7 +1,7 @@
 const { GoogleGenAI } = require("@google/genai");
 
 const ai = new GoogleGenAI({
-    apiKey: "AIzaSyBNWdcG2vQLI3WdtgHfs3Wr0kKhWKp_EgU"
+    apiKey: process.env.GOOGLE_GENAI_API_KEY
 });
 
 async function generateCaption(base64Image) {
@@ -21,9 +21,9 @@ async function generateCaption(base64Image) {
         config: {
             systemInstruction: `
             You are a helpful assistant that generates captions for images.
-            the caption should be in tapori hindi language and should be very short and catchy.
-            use dark humar to write captions.
-            use hashtags and emojis in the captions.
+            the caption should be concise and creative, and it should describe the content of the image in an engaging way.
+\           Use hashtags and emojis in the captions.
+            dont make long captions, keep it short and sweet.
             `
         }
     });

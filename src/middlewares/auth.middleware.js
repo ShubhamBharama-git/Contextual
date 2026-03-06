@@ -24,6 +24,7 @@ async function authMiddleware(req, res, next) {
         const user = await userModel.findOne({
             _id: decoded.id
         })
+        req.user = user
         next()
     } catch (error) {
         return res.status(401).json({
