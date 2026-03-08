@@ -4,8 +4,8 @@ const postSchema = new mongoose.Schema({
     image: String,
     caption: String,
     user: {
-        type: mongoose.Schema.ObjectId,
-        ref: "users"
+        type: mongoose.Schema.Types.ObjectId, // i can use populate here to retrive data from here 
+        ref: "user"
     }
 })
 

@@ -31,6 +31,17 @@ async function createPostController(req, res) {
     }
 }
 
+async function showAllPostController(res, res) {
+
+    const postData =  await postModel.find().populate("user");
+
+    return res.status(200).json({
+        message: "fetched all post data",
+        postData
+    })
+}
+
 module.exports = {
-    createPostController
+    createPostController,
+    showAllPostController
 }
