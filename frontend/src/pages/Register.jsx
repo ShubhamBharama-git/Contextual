@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import api from "../api/axios"
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from "../Context/AuthContext"
 
 function Register() {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+
+    const navigate = useNavigate()
+    const { login } = useContext(AuthContext)
 
     const handleRegister = async (e) => {
         e.preventDefault()
@@ -17,7 +22,8 @@ function Register() {
                 password
             })
 
-            console.log(response.data);
+            login(response.data.user)
+            navigate("/")
         } catch (e) {
             console.log(e);
         }

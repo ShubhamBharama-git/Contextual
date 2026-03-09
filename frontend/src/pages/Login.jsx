@@ -2,8 +2,11 @@ import { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import api from "../api/axios"
 import { useNavigate } from 'react-router-dom'
-
+import { useContext } from 'react'
+import { AuthContext } from '../Context/AuthContext'
 const Login = () => {
+
+    const { login } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -18,7 +21,7 @@ const Login = () => {
                 username,
                 password
             })
-            console.log(response.data);
+            login(response.data.user);
             navigate("/");
 
         } catch (error) {

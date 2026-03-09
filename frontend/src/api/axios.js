@@ -1,9 +1,8 @@
-// src/api/axios.js
 import axios from "axios"
 
 const api = axios.create({
-    baseURL: "http://localhost:3000", // your backend URL
-    withCredentials: true
+    baseURL: "http://localhost:3000", // backend URL
+    withCredentials: true // to browser credentials
 })
 
 export default api

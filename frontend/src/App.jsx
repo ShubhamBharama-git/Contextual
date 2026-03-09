@@ -3,7 +3,8 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Home from './pages/Home'
 import Navebar from "./components/Navebar"
-
+import CreatePost from "./components/CreatePost"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 const App = () => {
   return (
@@ -11,6 +12,11 @@ const App = () => {
       <Navebar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/create-post" element={
+          <ProtectedRoute>
+            <CreatePost />
+          </ProtectedRoute>
+        } />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>

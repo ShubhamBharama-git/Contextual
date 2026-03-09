@@ -6,12 +6,11 @@ const uploadFile = require("../services/storage.service");
 async function createPostController(req, res) {
     try {
         const file = req.file;
-        console.log(file);
 
         const base64Image = file.buffer.toString("base64");
 
         const caption = await generateCaption(base64Image);
-        const result = await uploadFile(file);
+        const result = await uploadFile(file); // imagekit url
 
         const user = await postModel.create({
             caption,
